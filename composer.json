@@ -5,9 +5,11 @@
     "homepage": "https://pivot-libre.github.io/",
     "type": "library",
     "require": {
+        "php": ">=7.1.0",
         "psr/log": "^1.0.2",
         "clue/graph": "0.9.0",
-        "graphp/algorithms": "0.8.1"
+        "graphp/algorithms": "0.8.1",
+        "php-ds/php-ds": "^1.2"
     },
     "require-dev": {
         "cadre/sniffs": "^0.1.0",
