@@ -23,7 +23,7 @@ class TotallyOrderedBallotPairTieBreaker implements PairTieBreaker
      * The CandidateComparator must use a Ballot that contains no ties.
      * In other words,the CandidateComparator should return nonzero integers for all Candidates, unless the two
      * Candidates being compared are actually the same Candidate as determined by comparing their Id properties:
-     * ($candidateA->getId() == $candidateB->getId())
+     * ($candidateA->getId() === $candidateB->getId())
      *
      */
     public function __construct(CandidateComparator $candidateComparator)

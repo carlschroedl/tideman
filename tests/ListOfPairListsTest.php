@@ -111,6 +111,24 @@ class ListOfPairListsTest extends GenericCollectionTestCase
         $this->assertEquals($expected, $actual);
     }
 
+    public function testTieBreakingOnThreeWayTie() : void
+    {
+        $instance = new ListOfPairLists(
+            new PairList(
+                new Pair($this->alice, $this->claire, 1),
+                new Pair($this->bob, $this->claire, 1),
+                new Pair($this->alice, $this->bob, 1)
+            )
+        );
+        $actual = $instance->breakTies($this->tieBreakingPairComparator);
+        $expected = new PairList(
+            new Pair($this->alice, $this->bob, 1),
+            new Pair($this->alice, $this->claire, 1),
+            new Pair($this->bob, $this->claire, 1)
+        );
+        $this->assertEquals($expected, $actual);
+    }
+
     public function testTieBreakingOnMixedList() : void
     {
         $instance = new ListOfPairLists(
