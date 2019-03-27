@@ -1,6 +1,7 @@
 # Tideman
 [![Travis status](https://img.shields.io/travis/pivot-libre/tideman/0.x.svg)](https://travis-ci.org/pivot-libre/tideman/)
 [![Coveralls coverage](https://img.shields.io/coveralls/pivot-libre/tideman/0.x.svg)](https://coveralls.io/github/pivot-libre/tideman)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/773d57c7644c4073910920eb8e991087)](https://www.codacy.com/app/pivot-libre/tideman?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=pivot-libre/tideman&amp;utm_campaign=Badge_Grade)
 [![PDD status](http://www.0pdd.com/svg?name=pivot-libre/tideman)](http://www.0pdd.com/p?name=pivot-libre/tideman)
 
 ## Purpose
@@ -28,8 +29,6 @@ The original 1987 Ranked Pairs paper lacked a tie-breaking rule. The follow-up 1
 In elections with a small number of voters, it is common to encounter margins of equal difference. The sort order of margins of equal difference needs to be determined by a tie-breaking rule. In this case, the tie-breaking rule is to sort the tied margins according to a tie-breaking ballot. If the tie-breaking ballot contains ties itself, the ties within this ballot are broken randomly using [PHP's default random number generator](http://php.net/manual/en/function.mt-rand.php).
 
 This implementation deviates from the 1989 paper in that it uses the tie-breaking ballot to break ties for all margins of identical strength, whereas the paper advocated that the tie-breaking rule be used only to break ties between margins whose differences were exactly zero.
-
-If this implementation finds that a completed graph contains multiple source nodes, then all of the candidates associated with the source nodes are considered winners and their order is determined by the tie-breaking ballot.
 
 ### Additional Reading
  *  [Wikipedia's Ranked Pairs article](https://en.wikipedia.org/wiki/Ranked_pairs)

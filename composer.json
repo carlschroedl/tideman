@@ -32,6 +32,7 @@
             "PHP_CodeSniffer\\": "vendor/squizlabs/php_codesniffer/src/"
         }
     },
+    "bin": ["bin/condorcet_check.php"],
     "license": "Apache-2.0",
     "minimum-stability": "dev"
 }

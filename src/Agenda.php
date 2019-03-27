@@ -13,10 +13,27 @@ class Agenda implements Countable
     /**
      * Creates an Agenda consisting of all unique Candidates from the parameterized Ballots.
      */
-    public function __construct(Ballot ...$ballots)
+    public function __construct(NBallot ...$ballots)
     {
         $this->candidateSet = new CandidateSet();
         $this->addCandidatesFromBallots(...$ballots);
+    }
+
+
+    /**
+     * @param Candidate ...$candidates
+     */
+    public function addCandidates(Candidate ...$candidates) : void
+    {
+
+        foreach ($candidates as $candidate) {
+            $this->candidateSet->add($candidate);
+            /**
+             * Since we are only using the candidateId as the key, we will set the value to a new Candidate
+             * every time. That means that if the Ballots store differing information on the same Candidate,
+             * then the attributes of the Candidate most-recently iterated over will be used.
+             */
+        }
     }
 
     public function removeCandidates(Candidate ...$candidates)
@@ -24,20 +41,12 @@ class Agenda implements Countable
         $this->candidateSet->remove(...$candidates);
     }
 
-    public function addCandidatesFromBallots(Ballot ...$ballots)
+    public function addCandidatesFromBallots(NBallot ...$ballots)
     {
         foreach ($ballots as $ballot) {
             //a ballot has multiple CandidateLists
             foreach ($ballot as $candidateList) {
-                //a CandidateList has multiple Candidates
-                foreach ($candidateList as $candidate) {
-                    $this->candidateSet->add($candidate);
-                    /**
-                     * Since we are only using the candidateId as the key, we will set the value to a new Candidate
-                     * every time. That means that if the Ballots store differing information on the same Candidate,
-                     * then the attributes of the Candidate most-recently iterated over will be used.
-                     */
-                }
+                $this->addCandidates(...$candidateList);
             }
         }
     }
